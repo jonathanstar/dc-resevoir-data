@@ -34,6 +34,8 @@ $(document).ready(function(){
 
     request.fail(function(jsXHR){
       console.log("fail");
+      console.log(jsXHR.responseText);
+      $("#post_form_container").prepend(jsXHR.responseText);
     })
   });
 

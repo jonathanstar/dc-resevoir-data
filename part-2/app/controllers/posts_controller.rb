@@ -5,10 +5,13 @@ end
 
 post "/posts" do
   params.to_s
-  @post = Post.new(params[:post])
+  post = Post.new(params[:post])
 
-  if @post.save
-    erb :"posts/_form"
+  if post.save
+    erb :"posts/_post", layout: false, locals: {post: post}
+  else
+    status 400
+    erb :_errors, layout: false, locals: {object: post}
   end
 end
 
