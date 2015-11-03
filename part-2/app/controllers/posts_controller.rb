@@ -4,16 +4,17 @@ get "/posts" do
 end
 
 post "/posts" do
+  params.to_s
   @post = Post.new(params[:post])
 
   if @post.save
-    redirect "posts/#{@post.id}"
+    erb :"posts/_form"
   end
 end
 
 get "/posts/new" do
   @post = Post.new
-  erb :'posts/new'
+  erb :'posts/new', layout: false
 end
 
 get "/posts/:id" do
