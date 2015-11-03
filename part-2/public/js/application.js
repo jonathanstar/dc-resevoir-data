@@ -9,7 +9,9 @@ $(document).ready(function(){
     });
 
     request.done(function(response){
-      $("#new_post_link").replaceWith($(response))
+      $("#replacable").append(response)
+      $("#new_post_link").hide();
+      // debugger
     });
 
     request.fail(function(jsXHR){
@@ -29,13 +31,15 @@ $(document).ready(function(){
     });
 
     request.done(function(response){
-      console.log(response);
+      $("#posts").append(response);
+      $("#replacable").text("");
+      $("#new_post_link").show();
     })
 
     request.fail(function(jsXHR){
       console.log("fail");
       console.log(jsXHR.responseText);
-      $("#post_form_container").prepend(jsXHR.responseText);
+      $("#replacable").prepend(jsXHR.responseText);
     })
   });
 

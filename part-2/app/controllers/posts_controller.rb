@@ -17,7 +17,7 @@ end
 
 get "/posts/new" do
   @post = Post.new
-  erb :'posts/new', layout: false
+  erb :'posts/_form', layout: false, locals: {post: @post}
 end
 
 get "/posts/:id" do
